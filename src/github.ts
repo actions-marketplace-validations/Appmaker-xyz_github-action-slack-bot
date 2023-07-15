@@ -32,53 +32,140 @@ class Github {
   }
 
   getReleasePayloadsBlocks() {
-    console.log(process?.env?.LOCAL_TESTING,'xxx')
     const context =
       process?.env?.LOCAL_TESTING === "1" ? sampleData : github.context;
     const { eventName } = context;
     if (eventName !== "release") {
       return undefined;
     }
-   return [
-    {
-			"type": "header",
-			"text": {
-				"type": "plain_text",
-				"text": eventName?.toUpperCase(),
-				"emoji": true
-			}
-		},
-    {
-      "type": "divider"
-    },
-    {
-			"type": "section",
-			"text": {
-				"type": "plain_text",
-				"text": `${github.context?.payload?.repository?.name}`,
-				"emoji": true
-			}
-		},
-    // {
-		// 	"type": "section",
-		// 	"text": {
-		// 		"type": "mrkdwn",
-		// 		"text": github.context?.payload?.repository?.full_name
-		// 	},
-		// 	"accessory": {
-		// 		"type": "button",
-		// 		"text": {
-		// 			"type": "plain_text",
-		// 			"text": "Open repo",
-		// 			"emoji": true
-		// 		},
-		// 		"value": github.context?.payload?.repository?.html_url,
-		// 		"url": github.context?.payload?.repository?.html_url,
-		// 		"action_id": "button-action"
-		// 	}
-		// }
-   ]
 
+    return [
+      {
+        type: "header",
+        text: {
+          type: "plain_text",
+          text: eventName?.toUpperCase(),
+          emoji: true,
+        },
+      },
+      {
+        type: "divider",
+      },
+      {
+        type: "section",
+        text: {
+          type: "plain_text",
+          text: "Repo: " + `${context?.payload?.repository?.name}` ?? " ",
+          emoji: true,
+        },
+      },
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: context?.payload?.repository?.full_name ?? " ",
+        },
+        accessory: {
+          type: "button",
+          text: {
+            type: "plain_text",
+            text: "Goto repo",
+            emoji: true,
+          },
+          value: "click-123",
+          url: context?.payload?.repository?.html_url ?? " ",
+          action_id: "button-action",
+        },
+      },
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: "Tag" + `${context?.payload?.release?.tag_name}` ?? " ",
+        },
+        accessory: {
+          type: "button",
+          text: {
+            type: "plain_text",
+            text: "Goto Tag",
+            emoji: true,
+          },
+          value: "click-123asd",
+          url: context?.payload?.release?.html_url ?? " ",
+          action_id: "button-action",
+        },
+      },
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text:
+            "Released by: " + `${context?.payload?.release?.author?.login}` ??
+            " ",
+        },
+        accessory: {
+          type: "image",
+          image_url: context?.payload?.release?.author?.avatar_url,
+          alt_text: "pic",
+        },
+      },
+      {
+        type: "section",
+        text: {
+          type: "plain_text",
+          text:
+            "Created at: " + `${context?.payload?.release?.created_at}` ?? " ",
+          emoji: true,
+        },
+      },
+      {
+        type: "section",
+        text: {
+          type: "plain_text",
+          text:
+            "Is pre-release " + `${context?.payload?.release?.prerelease}` ??
+            " ",
+          emoji: true,
+        },
+      },
+      {
+        type: "divider",
+      },
+      {
+        type: "section",
+        text: {
+          type: "plain_text",
+          text: "Name " + `${context?.payload?.release?.name}` ?? " ",
+          emoji: true,
+        },
+      },
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text:
+            context?.payload?.release?.prerelease?.length > 0
+              ? context?.payload?.release?.prerelease
+              : " ",
+        },
+      },
+    ];
+  }
+  getMessageBlocks(message: string) {
+    if (!message) {
+      return undefined;
+    }
+    return {
+      type: "section",
+      text: {
+        type: "plain_text",
+        text: message ?? " ",
+        emoji: true,
+      },
+    };
+  }
+  sendError(message: string) {
+    core.setFailed(message);
   }
 }
 export default Github;
