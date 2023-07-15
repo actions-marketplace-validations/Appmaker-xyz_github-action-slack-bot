@@ -1,0 +1,15 @@
+name: 'release-slack-bot'
+description: 'Slack bot to send message from actions on release'
+inputs:
+  bot-token:
+    description: 'Bot token'
+    required: true
+  channel:
+    description: 'Message channel'
+    required: true
+  append-message:
+    description: 'Append Message to last' 
+    required: false
+runs:
+  using: docker
+  image: 'Dockerfile'
