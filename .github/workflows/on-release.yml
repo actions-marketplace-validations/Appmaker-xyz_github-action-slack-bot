@@ -1,0 +1,19 @@
+on:
+  release:
+    types:
+      - "created"
+jobs:
+  on-release-test:
+    runs-on: ubuntu-latest
+    name: "On release"
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Send message
+        uses: ./ # Uses an action in the root directory
+        id: slack-bot
+        with:
+          bot-token: ${{ secrets.BOT_TOKEN}}
+          channel: ${{ secrets.CHANNEL}}
