@@ -21,6 +21,7 @@ import "dotenv/config";
       channel,
       blocks: newBlock,
     });
+    console.log("Message sent to slack successfully");
   } catch (error: any) {
     console.log(error);
     return github.sendError(error?.message ?? "Something went wrong");
