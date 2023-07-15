@@ -54,9 +54,8 @@ class Github {
       {
         type: "section",
         text: {
-          type: "plain_text",
-          text: "Repo: " + `${context?.payload?.repository?.name}` ?? " ",
-          emoji: true,
+          type: "mrkdwn",
+          text: "Repo: " + `*${context?.payload?.repository?.name}*` ?? " ",
         },
       },
       {
@@ -81,7 +80,7 @@ class Github {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: "Tag" + `${context?.payload?.release?.tag_name}` ?? " ",
+          text: "Tag: " + `*${context?.payload?.release?.tag_name}*` ?? " ",
         },
         accessory: {
           type: "button",
@@ -100,7 +99,7 @@ class Github {
         text: {
           type: "mrkdwn",
           text:
-            "Released by: " + `${context?.payload?.release?.author?.login}` ??
+            "Released by: " + `*${context?.payload?.release?.author?.login}*` ??
             " ",
         },
         accessory: {
