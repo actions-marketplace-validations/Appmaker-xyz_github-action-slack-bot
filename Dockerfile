@@ -8,5 +8,5 @@ RUN npm run build
 RUN ls -la
 # Run `node /index.js`
 # ENTRYPOINT ["node", "./dist/index.js"]
-RUN chmod +x ./entrypoint.sh
+RUN chmod 775 ./entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
