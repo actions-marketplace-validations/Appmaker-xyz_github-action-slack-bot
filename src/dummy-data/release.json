@@ -24,7 +24,7 @@
           "type": "User",
           "url": "https://api.github.com/users/dummy"
         },
-        "body": "Sample body",
+        "body": "## Version X.X.X\r\n\r\n### New Features\r\n\r\n- [Feature 1]: Brief description of the feature.\r\n- [Feature 2]: Brief description of the feature.\r\n\r\n### Enhancements\r\n\r\n- [Enhancement 1]: Brief description of the enhancement.\r\n- [Enhancement 2]: Brief description of the enhancement.\r\n\r\n### Bug Fixes\r\n\r\n- [Bug Fix 1]: Brief description of the bug fix.\r\n- [Bug Fix 2]: Brief description of the bug fix.\r\n\r\n### Miscellaneous\r\n\r\n- [Miscellaneous 1]: Brief description of any other updates or changes.\r\n- [Miscellaneous 2]: Brief description of any other updates or changes.\r\n\r\n### Contributors\r\n\r\n- [Contributor 1]: Name of the contributor.\r\n- [Contributor 2]: Name of the contributor.\r\n",
         "created_at": "2023-07-15T20:08:14Z",
         "draft": false,
         "html_url": "https://github.com/dummy/new-repo/releases/tag/1.0.1",
