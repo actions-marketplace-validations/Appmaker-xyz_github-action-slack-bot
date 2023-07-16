@@ -139,6 +139,9 @@ class Github {
         },
       },
       {
+        type: "divider",
+      },
+      {
         type: "section",
         text: {
           type: "mrkdwn",
@@ -147,6 +150,9 @@ class Github {
               ? context?.payload?.release?.body
               : " ",
         },
+      },
+      {
+        type: "divider",
       },
     ];
   }

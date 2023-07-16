@@ -17,3 +17,4 @@ jobs:
         with:
           bot-token: ${{ secrets.BOT_TOKEN}}
           channel: ${{ secrets.CHANNEL}}
+          append-message: By Deploy bot
