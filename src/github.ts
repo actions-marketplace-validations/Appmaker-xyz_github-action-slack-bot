@@ -143,8 +143,8 @@ class Github {
         text: {
           type: "mrkdwn",
           text:
-            context?.payload?.release?.prerelease?.length > 0
-              ? context?.payload?.release?.prerelease
+            context?.payload?.release?.body?.length > 0
+              ? context?.payload?.release?.body
               : " ",
         },
       },
