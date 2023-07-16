@@ -2,11 +2,12 @@ FROM node:slim
 WORKDIR /slack-blot
 COPY . .
 
-# Install dependencies
+# Install and build dependencies
 RUN npm i
 RUN npm run build
-RUN ls -la
-# Run `node /index.js`
-# ENTRYPOINT ["node", "./dist/index.js"]
-RUN chmod 775 ./entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+
+
+
+RUN chmod 775 /slack-blot/dist
+
+ENTRYPOINT ["node", "/slack-blot/dist/index.js"]
